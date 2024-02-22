@@ -2,6 +2,7 @@
 import React from 'react';
 import GptSummary from './GptSummary';
 import PdfViewer from './PdfViewer';
+import Footer from './Footer';
 import './AnnouncementPage.css';
 
 const AnnouncementPage = ({ summary, pdfUrl }) => {
