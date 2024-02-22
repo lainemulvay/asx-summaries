@@ -1,0 +1,10 @@
+{
+  "pdfs": [
+    {
+      "ticker": "IDX",
+      "date": "2023-11-03T00:00:00Z",
+      "pdfId": "abcde",
+      "pdfUrl": "/IDX_Trading_update.pdf"
+    }
+  ]
+}

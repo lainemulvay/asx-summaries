@@ -1,0 +1,16 @@
+.summary-container {
+    padding: 20px;
+    background-color: #00568b;
+    border: 1px solid #137d00;
+    border-radius: 5px;
+    color: #ff0000;
+    font-size: 16px;
+}
+
+.summary h2 {
+    margin-bottom: 10px;
+}
+
+.summary p {
+    color: #000; /* Change color to your preference */
+}

@@ -1,0 +1,22 @@
+.sidebar-container {
+    background-color: #f4f4f4;
+    padding: 10px;
+    width: 200px;
+}
+
+.sidebar-item {
+    margin-bottom: 10px;
+}
+
+.sidebar-link {
+    color: #333;
+    text-decoration: none;
+}
+
+.dropdown {
+    display: none;
+}
+
+.dropdown.active {
+    display: block;
+}

@@ -1,0 +1,15 @@
+.header-container {
+    background-color: #ad1414;
+    color: white;
+    padding: 10px;
+}
+
+.search-bar {
+    margin-bottom: 10px;
+}
+
+.search-input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
