@@ -1,19 +1,28 @@
-// AnnouncementPage.js
 import React from 'react';
-import GptSummary from './GptSummary';
-import PdfViewer from './PdfViewer';
-import Footer from './Footer';
-import './AnnouncementPage.css';
+import { useParams } from 'react-router-dom';
+import { getPDFsFromDatabase } from '../database/pdfDatabase';
+import PdfViewer from '../components/PdfViewer';
+import GptSummary from '../components/GptSummary';
 
-const AnnouncementPage = ({ summary, pdfUrl }) => {
+const AnnouncementPage = () => {
+  const { ticker, pdfName } = useParams();
+
+  // Create pdfPath from pdfName
+  const pdfPath = `${process.env.PUBLIC_URL}/pdfs/${pdfName}.pdf`;
+  console.log('PDF Path:', pdfPath);
+
+  const pdfs = getPDFsFromDatabase();
+  const pdf = pdfs.find(pdf => pdf.ticker === ticker && pdf.pdfName === pdfName);
+
+  if (!pdf) {
+    return <div>PDF not found</div>;
+  }
+
   return (
-    <div className="announcement-page">
-      <main>
-        <div className="content">
-          <GptSummary summary={summary} />
-          <PdfViewer pdfUrl={pdfUrl} />
-        </div>
-      </main>
+    <div>
+      <h2>{pdf.ticker} Announcement</h2>
+      <PdfViewer pdfPath={pdfPath} ticker={ticker} />
+      <GptSummary summary="Your GPT summary here" />
     </div>
   );
 };

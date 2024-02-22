@@ -1,9 +1,13 @@
 .header-container {
-    background-color: #ad1414;
+    background-color: #0c3b6c;
     color: white;
     padding: 10px;
 }
 
+.header-link {
+    color: white;
+    text-decoration: none;
+}
 .search-bar {
     margin-bottom: 10px;
 }

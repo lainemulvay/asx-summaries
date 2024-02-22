@@ -2,8 +2,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import AnnouncementPage from './components/AnnouncementPage';
-import StockViewer from './components/StockViewer';
+import AnnouncementPage from './pages/AnnouncementPage';
+import StockPage from './pages/StockPage';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
@@ -17,8 +17,8 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/:ticker/:pdfId" element={<AnnouncementPage />} />
-            <Route path="/:ticker" element={<StockViewer />} />
+            <Route path="/:ticker" element={<StockPage />} />
+            <Route path="/:ticker/:pdfName" element={<AnnouncementPage />} />
           </Routes>
         </main>
         <Footer />

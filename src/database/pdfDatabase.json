@@ -4,7 +4,49 @@
       "ticker": "IDX",
       "date": "2023-11-03T00:00:00Z",
       "pdfId": "abcde",
-      "pdfUrl": "/IDX_Trading_update.pdf"
+      "pdfName": "IDX_Trading_update"
+    },
+    {
+      "ticker": "BHP",
+      "date": "2024-02-20T00:00:00Z",
+      "pdfId": "abcdef1234",
+      "pdfName": "BHP_HY2024_Results_Presentation"
+    },
+    {
+      "ticker": "BHP",
+      "date": "2024-02-20T00:00:00Z",
+      "pdfId": "ghijkl5678",
+      "pdfName": "BHP_Dividend_Distribution"
+    },
+    {
+      "ticker": "BHP",
+      "date": "2024-02-20T00:00:00Z",
+      "pdfId": "mnopqr9012",
+      "pdfName": "BHP_Half_Yearly_Report_Accounts"
+    },
+    {
+      "ticker": "BHP",
+      "date": "2024-02-15T00:00:00Z",
+      "pdfId": "stuvwx3456",
+      "pdfName": "BHP_Half_Year_2024_Exceptional_Items_Update"
+    },
+    {
+      "ticker": "BHP",
+      "date": "2024-01-15T00:00:00Z",
+      "pdfId": "klmnop6789",
+      "pdfName": "BHP_Notification_of_Cessation_Securities"
+    },
+    {
+      "ticker": "BHP",
+      "date": "2024-01-11T00:00:00Z",
+      "pdfId": "qrstuv1234",
+      "pdfName": "BHP_Notification_Regarding_Unquoted_Securities_1"
+    },
+    {
+      "ticker": "BHP",
+      "date": "2024-01-10T00:00:00Z",
+      "pdfId": "wxyzab5678",
+      "pdfName": "BHP_Notification_Regarding_Unquoted_Securities_2"
     }
   ]
 }
