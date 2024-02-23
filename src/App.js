@@ -4,7 +4,6 @@ import HomePage from './pages/HomePage';
 import AnnouncementPage from './pages/AnnouncementPage';
 import StockPage from './pages/StockPage';
 import Header from './components/Header';
-import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 
 function App() {
@@ -13,7 +12,6 @@ function App() {
       <div className="App">
         <Header />
         <main className="main-container">
-          <Sidebar />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/:ticker" element={<StockPage />} />

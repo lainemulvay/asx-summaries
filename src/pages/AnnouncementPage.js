@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getPDFsFromDatabase } from '../database/pdfDatabase';
 import PdfViewer from '../components/PdfViewer';
 import GptSummary from '../components/GptSummary';
+import Sidebar from '../components/Sidebar';
 
 const AnnouncementPage = () => {
   const { ticker, pdfName } = useParams();
@@ -22,7 +23,7 @@ const AnnouncementPage = () => {
     <div>
       <GptSummary summary="Your GPT summary here" />
       <PdfViewer pdfPath={pdfPath} ticker={ticker} />
-    
+      <Sidebar ticker={ticker} />
     </div>
   );
 };

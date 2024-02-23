@@ -1,19 +1,55 @@
 .header-container {
-    background-color: #0c3b6c;
-    color: white;
-    padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  padding: 10px 20px; /* Adjusted padding */
 }
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px; /* Adjusted top margin */
+  margin-bottom: 5px; /* Adjusted bottom margin */
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  margin-top: 60px;
+}
+
+.header-top {
+  margin-bottom: 10px;
+}
+
+.header-search {
+  margin-top: 10px;
+}
+
 
 .header-link {
-    color: white;
-    text-decoration: none;
-}
-.search-bar {
-    margin-bottom: 10px;
+  color: white;
+  text-decoration: none;
+  font-weight: 400; /* Normal font weight */
 }
 
-.search-input {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.header-link h1 {
+  margin: 5px 0px; /* Remove margin from h1 */
+}
+
+.header-sublink {
+  color: white;
+  text-decoration: none;
+  margin-right: 10px;
+  padding: 0 10px; /* Add padding to create space between sublinks */
+  transition: font-weight 0.2s; /* Smooth transition for font weight */
+  font-weight: 400; /* Normal font weight */
+  display: inline-block; /* Make sublinks take up width of content */
+  text-align: center; /* Center text within sublinks */
+}
+
+.header-sublink:hover {
+  font-weight: bold; /* Bold when hovering */
 }

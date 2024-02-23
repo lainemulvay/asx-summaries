@@ -1,6 +1,7 @@
 .announcement-table-container {
     max-width: 800px;
     margin: 0 auto;
+    margin-bottom: 60px;
   }
   
   .announcement-table {
@@ -31,3 +32,31 @@
     text-decoration: none;
   }
   
+  .sidebar {
+    position: fixed;
+    top: 109px; /* Adjust according to your header height */
+    bottom: 0;
+    width: 200px;
+    background-color: #f4f4f4;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar a {
+    color: #333;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    text-decoration: underline;
+}
+

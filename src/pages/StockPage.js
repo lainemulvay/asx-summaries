@@ -19,10 +19,13 @@ const StockPage = () => {
 
   return (
     <div className="stock-page">
+      <div className="header-container">
+        {/* Your header content here */}
+      </div>
       <div className="main-container">
         <AnnouncementTable pdfs={pdfs} ticker={ticker} />
+        <Sidebar ticker={ticker} />
       </div>
-      <Sidebar />
     </div>
   );
 };
