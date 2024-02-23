@@ -47,6 +47,24 @@
       "date": "2024-01-10T00:00:00Z",
       "pdfId": "wxyzab5678",
       "pdfName": "BHP_Notification_Regarding_Unquoted_Securities_2"
+    },
+    {
+      "ticker": "BHP",
+      "date": "2023-11-01T00:00:00Z",
+      "pdfId": "qweasd1234",
+      "pdfName": "BHP_Final_Directors_Interest_Notice"
+    },
+    {
+      "ticker": "BHP",
+      "date": "2023-10-18T00:00:00Z",
+      "pdfId": "zxcvbn5678",
+      "pdfName": "BHP_Quarterly_Activities_Report"
+    },
+    {
+      "ticker": "BHP",
+      "date": "2023-07-13T00:00:00Z",
+      "pdfId": "poiuyt9876",
+      "pdfName": "BHP_Notification_regarding_unquoted_securities_BHP"
     }
   ]
 }

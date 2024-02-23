@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
+  background-color: #23305e;
   color: white;
   padding: 10px 20px; /* Adjusted padding */
 }
@@ -44,7 +44,6 @@
   text-decoration: none;
   margin-right: 10px;
   padding: 0 10px; /* Add padding to create space between sublinks */
-  transition: font-weight 0.2s; /* Smooth transition for font weight */
   font-weight: 400; /* Normal font weight */
   display: inline-block; /* Make sublinks take up width of content */
   text-align: center; /* Center text within sublinks */
@@ -52,4 +51,9 @@
 
 .header-sublink:hover {
   font-weight: bold; /* Bold when hovering */
+}
+
+.header-search input {
+  padding: 5px; /* Adjusted padding */
+  margin-right: 10px;
 }
