@@ -20,9 +20,9 @@ const AnnouncementPage = () => {
 
   return (
     <div>
-      <h2>{pdf.ticker} Announcement</h2>
-      <PdfViewer pdfPath={pdfPath} ticker={ticker} />
       <GptSummary summary="Your GPT summary here" />
+      <PdfViewer pdfPath={pdfPath} ticker={ticker} />
+    
     </div>
   );
 };

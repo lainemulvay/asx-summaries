@@ -1,0 +1,33 @@
+.announcement-table-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .announcement-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .announcement-table th, .announcement-table td {
+    border: 1px solid #ccc;
+    padding: 4px;
+    text-align: left;
+  }
+  
+  .announcement-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .announcement-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .announcement-table tbody tr:hover {
+    background-color: #f2f2f2;
+  }
+  
+  .announcement-table a {
+    color: blue;
+    text-decoration: none;
+  }
+  

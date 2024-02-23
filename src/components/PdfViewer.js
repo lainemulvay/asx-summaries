@@ -15,7 +15,7 @@ const PdfViewer = ({ pdfPath, ticker }) => {
       </Document>
       {/* Add a unique title to the iframe */}
       <iframe
-        title={`${ticker} Announcement`}
+        title={`${ticker} Announcement PDF`}
         src={pdfPath}
         className="pdf-iframe"
         style={{ width: '100%', height: '1200px', border: 'none' }}

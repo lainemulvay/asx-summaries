@@ -1,16 +1,23 @@
 .summary-container {
-    padding: 20px;
-    background-color: #00568b;
-    border: 1px solid #137d00;
+    padding: 20px 10px; /* Top and bottom padding, left and right padding */
+    background-color: #cdecff;
+    border: 1px solid #ffffff;
     border-radius: 5px;
-    color: #ff0000;
+    color: #000000;
     font-size: 16px;
-}
-
-.summary h2 {
+    margin-top: 25px; /* Optional: Add margin at the top */
+    margin-bottom: 10px; /* Optional: Add margin at the bottom */
+    width: 80%; /* Set width to 80% of the page */
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
+  }
+  
+  
+  .summary h2 {
     margin-bottom: 10px;
-}
-
-.summary p {
+  }
+  
+  .summary p {
     color: #000; /* Change color to your preference */
-}
+  }
+  

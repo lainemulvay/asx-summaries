@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { getPDFsFromDatabase } from '../database/pdfDatabase';
+import AnnouncementTable from '../components/AnnouncementTable';
+import Sidebar from '../components/Sidebar';
 
 const StockPage = () => {
   const { ticker } = useParams();
@@ -16,28 +18,11 @@ const StockPage = () => {
   }, [ticker]);
 
   return (
-    <div>
-      <h2>{ticker} Announcements</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>PDF Name</th>
-          </tr>
-        </thead>
-        <tbody>
-          {pdfs.map(pdf => (
-            <tr key={pdf.pdfId}>
-              <td>{new Date(pdf.date).toLocaleDateString()}</td>
-              <td>
-                <Link to={`/${ticker}/${pdf.pdfName}`}>
-                  {pdf.pdfName}
-                </Link>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="stock-page">
+      <div className="main-container">
+        <AnnouncementTable pdfs={pdfs} ticker={ticker} />
+      </div>
+      <Sidebar />
     </div>
   );
 };
