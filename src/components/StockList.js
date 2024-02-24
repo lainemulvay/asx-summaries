@@ -14,12 +14,13 @@ const StockList = () => {
         const snapshot = await getDocs(stocksCollection);
 
         const stocksData = snapshot.docs.map(doc => {
+          const data = doc.data();
           return {
             id: doc.id,
             ticker: doc.id,
-            marketCap: doc.data().marketCap,
-            price: doc.data().price,
-            // Add more fields as needed
+            companyName: data.Name, // Adjust this according to your Firestore structure
+            marketCap: data.marketCap, // Adjust this according to your Firestore structure
+            price: data.price, // Adjust this according to your Firestore structure
           };
         });
 
@@ -39,22 +40,26 @@ const StockList = () => {
         <thead>
           <tr>
             <th>Ticker</th>
+            <th>Company</th>
             <th>Market Cap</th>
             <th>Price</th>
-            {/* Add more headers if needed */}
           </tr>
         </thead>
         <tbody>
           {stocks.map((stock, index) => (
             <tr key={index}>
               <td>
-                <Link to={`/ASX/${stock.ticker}`}>
+                <Link to={`/ASX/${stock.ticker}`} className="link">
                   {stock.ticker}
+                </Link>
+              </td>
+              <td>
+                <Link to={`/ASX/${stock.ticker}`} className="link">
+                  {stock.companyName}
                 </Link>
               </td>
               <td>{stock.marketCap}</td>
               <td>{stock.price}</td>
-              {/* Render more data here if needed */}
             </tr>
           ))}
         </tbody>
