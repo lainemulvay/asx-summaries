@@ -1,8 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './AnnouncementTable.css'; // Import your CSS file
 
 const AnnouncementTable = ({ pdfs, ticker }) => {
+  const navigate = useNavigate();
+
+  const handlePdfClick = (pdfName) => {
+    const pdf = pdfs.find(pdf => pdf.pdfName === pdfName);
+    if (!pdf) {
+      navigate(`/${ticker}/announcement-not-found`);
+    }
+  };
+
   return (
     <div className="announcement-table-container">
       <h2>{ticker}</h2>
@@ -18,9 +27,14 @@ const AnnouncementTable = ({ pdfs, ticker }) => {
             <tr key={pdf.pdfId}>
               <td>{new Date(pdf.date).toLocaleDateString()}</td>
               <td>
-                <Link to={`/${ticker}/${pdf.pdfName}`}>
+                <a
+                  href={`${process.env.PUBLIC_URL}/${ticker}/${pdf.pdfName}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => handlePdfClick(pdf.pdfName)}
+                >
                   {pdf.pdfName}
-                </Link>
+                </a>
               </td>
             </tr>
           ))}

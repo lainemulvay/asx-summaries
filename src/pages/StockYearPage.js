@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import db from '../database/firebaseConfig';
+import AnnouncementTable from '../components/AnnouncementTable';
+import Sidebar from '../components/Sidebar';
 
-const Sidebar = ({ ticker }) => {
+const StockPage = () => {
+  const { ticker } = useParams();
   const [yearsData, setYearsData] = useState([]);
 
   useEffect(() => {
@@ -37,25 +40,16 @@ const Sidebar = ({ ticker }) => {
   }, [ticker]);
 
   return (
-    <div className="sidebar" style={{ position: 'fixed', right: 0 }}>
-      <ul>
-        {yearsData.map(({ year, pdfs }) => (
-          <li key={year}>
-            <div className="year-container">
-              <Link to={`/${ticker}/${year}`}>{year}</Link>
-              <ul className="announcement-list">
-                {pdfs.map(pdf => (
-                  <li key={pdf.PDFId}>
-                    <Link to={`/${ticker}/${year}/${pdf.PDFId}`}>{pdf.PDFName}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </li>
-        ))}
-      </ul>
+    <div className="stock-page">
+      <div className="header-container">
+        {/* Your header content here */}
+      </div>
+      <div className="main-container">
+        <AnnouncementTable pdfs={yearsData} ticker={ticker} />
+        <Sidebar ticker={ticker} />
+      </div>
     </div>
   );
 };
 
-export default Sidebar;
+export default StockPage;

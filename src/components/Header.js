@@ -8,7 +8,7 @@ const Header = () => {
   const handleSearch = () => {
     if (searchTerm.trim() !== '') {
       const searchQuery = searchTerm.trim().toUpperCase();
-      window.location.href = `/${searchQuery}`;
+      window.location.href = `/ASX/${searchQuery}`;
       setSearchTerm('');
     }
   };
@@ -45,10 +45,10 @@ const Header = () => {
         <Link to="/" className="header-sublink">
           Home
         </Link>
-        <Link to="/announcements" className="header-sublink">
+        {/* <Link to="/announcements" className="header-sublink">
           Today's Announcements
-        </Link>
-        <Link to="/stock-list" className="header-sublink">
+        </Link> */}
+        <Link to="/ASX/stock-list" className="header-sublink">
           Stock List
         </Link>
         <Link to="/register" className="header-sublink">

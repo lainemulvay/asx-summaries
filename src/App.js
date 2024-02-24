@@ -2,11 +2,13 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import AnnouncementPage from './pages/AnnouncementPage';
-import StockPage from './pages/StockPage';
+import StockHomePage from './pages/StockHomePage';
+import StockYearPage from './pages/StockYearPage';
 import StockListPage from './pages/StockListPage';
+import StockNotFound from './pages/StockNotFound';
+import AnnouncementNotFound from './pages/AnnouncementNotFound';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import StockNotFound from './components/StockNotFound';
 
 
 function App() {
@@ -17,10 +19,12 @@ function App() {
         <main className="main-container">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/stock-list" element={<StockListPage />} />
-            <Route path="/:ticker" element={<StockPage />} />
-            <Route path="/:ticker/:pdfName" element={<AnnouncementPage />} />
-            <Route path="/:ticker/not-listed" element={<StockNotFound />} />
+            <Route path="/ASX/stock-list" element={<StockListPage />} />
+            <Route path="/ASX/:ticker" element={<StockHomePage />} />
+            <Route path="/ASX/:ticker/:year" element={<StockYearPage />} />
+            <Route path="/ASX/:ticker/:pdfName" element={<AnnouncementPage />} />
+            <Route path="/not-listed" element={<StockNotFound />} />
+            <Route path="/:ticker/announcement-not-found" element={<AnnouncementNotFound />} />
           </Routes>
         </main>
         <Footer />
