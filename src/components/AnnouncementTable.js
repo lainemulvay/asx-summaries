@@ -26,7 +26,7 @@ const AnnouncementTable = ({ ticker, year, announcements }) => {
             <tr key={index}>
               <td>{announcement.Timestamp ? new Date(announcement.Timestamp.seconds * 1000).toLocaleDateString() : 'N/A'}</td>
               <td>
-                <Link to={`/announcement/${ticker}/${year}/${announcement.id}`}>
+                <Link to={`/ASX/${ticker}/announcement/${announcement.ID}`}>
                   {announcement.Name}
                 </Link>
               </td>

@@ -10,7 +10,6 @@ import AnnouncementNotFound from './pages/AnnouncementNotFound';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-
 function App() {
   return (
     <Router>
@@ -22,7 +21,7 @@ function App() {
             <Route path="/ASX/stock-list" element={<StockListPage />} />
             <Route path="/ASX/:ticker" element={<StockHomePage />} />
             <Route path="/ASX/:ticker/:year" element={<StockYearPage />} />
-            <Route path="/ASX/:ticker/:pdfName" element={<AnnouncementPage />} />
+            <Route path="/ASX/:ticker/announcement/:ID" element={<AnnouncementPage />} />
             <Route path="/not-listed" element={<StockNotFound />} />
             <Route path="/:ticker/announcement-not-found" element={<AnnouncementNotFound />} />
           </Routes>

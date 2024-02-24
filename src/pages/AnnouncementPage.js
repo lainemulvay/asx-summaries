@@ -5,17 +5,17 @@ import PdfViewer from '../components/PdfViewer';
 import GptSummary from '../components/GptSummary';
 
 const AnnouncementPage = () => {
-  const { ticker, year, pdfId } = useParams();
+  const { ticker, year, ID } = useParams(); // Correctly extract ID here
   const [pdfDetails, setPdfDetails] = useState(null);
 
   useEffect(() => {
     const fetchPdfDetails = async () => {
       try {
-        const pdfRef = db.collection('ASX').doc(ticker).collection(year).doc(pdfId);
+        const pdfRef = db.collection('ASX').doc(ticker).collection(year).doc(ID);
         const pdfDoc = await pdfRef.get();
 
         if (!pdfDoc.exists) {
-          console.log('PDF not found for ID:', pdfId);
+          console.log('PDF not found for ID:', ID);
           return;
         }
 
@@ -26,7 +26,7 @@ const AnnouncementPage = () => {
     };
 
     fetchPdfDetails();
-  }, [ticker, year, pdfId]);
+  }, [ticker, year, ID]);
 
   if (!pdfDetails) {
     return <div>Loading PDF...</div>;
