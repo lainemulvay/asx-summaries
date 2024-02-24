@@ -1,21 +1,21 @@
 import React from 'react';
-import { Document, Page } from '@react-pdf/renderer';
 
-const PdfViewer = ({ pdfPath, ticker }) => {
-  console.log('Received PDF Path:', pdfPath);
+const PdfViewer = ({ pdfPath, ticker, pdfName, date }) => {
+  if (!pdfPath) {
+    return (
+      <div className="pdf-not-found">
+        <p>{ticker} PDF not found.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="pdf-container" style={{ width: '80%', margin: '0 auto' }}>
-      <h2>{ticker} Announcement</h2>
-      <Document file={pdfPath}>
-        {/* Loop through all pages */}
-        {Array.from(new Array(5), (el, index) => (
-          <Page key={`page_${index + 1}`} pageNumber={index + 1} className="pdf-page" />
-        ))}
-      </Document>
+      <h2>{pdfName}</h2>
+      <h3>{new Date(date).toLocaleDateString()}</h3>
       {/* Add a unique title to the iframe */}
       <iframe
-        title={`${ticker} Announcement PDF`}
+        title={`${pdfName} (${ticker}) Announcement PDF`}
         src={pdfPath}
         className="pdf-iframe"
         style={{ width: '100%', height: '1200px', border: 'none' }}
