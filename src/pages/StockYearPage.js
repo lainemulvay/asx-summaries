@@ -3,53 +3,41 @@ import { useParams } from 'react-router-dom';
 import db from '../database/firebaseConfig';
 import AnnouncementTable from '../components/AnnouncementTable';
 import Sidebar from '../components/Sidebar';
+import getAnnouncements from '../database/getAnnouncements'; // Import the function
 
-const StockPage = () => {
-  const { ticker } = useParams();
-  const [yearsData, setYearsData] = useState([]);
+const StockYearPage = () => {
+  const { ticker, year } = useParams();
+  const [announcements, setAnnouncements] = useState([]);
+  const [stockName, setStockName] = useState('');
 
   useEffect(() => {
-    const fetchYearsData = async () => {
+    const fetchYearData = async () => {
       try {
-        const stockRef = db.collection('ASX').doc(ticker);
-        const snapshot = await stockRef.get();
+        // Fetch announcements using getAnnouncements function
+        const announcementsData = await getAnnouncements(ticker, year);
+        setAnnouncements(announcementsData);
 
-        if (!snapshot.exists) {
-          console.log('Stock not found in database');
-          return;
+        // Fetch stock name
+        const stockSnapshot = await db.collection('ASX').doc(ticker).get();
+        if (stockSnapshot.exists) {
+          setStockName(stockSnapshot.data().Name);
         }
-
-        const yearsData = [];
-        const years = snapshot.data();
-
-        for (const year in years) {
-          const pdfs = years[year];
-          yearsData.push({
-            year,
-            pdfs,
-          });
-        }
-
-        setYearsData(yearsData);
       } catch (error) {
-        console.error('Error fetching document:', error);
+        console.error('Error fetching documents:', error);
       }
     };
 
-    fetchYearsData();
-  }, [ticker]);
+    fetchYearData();
+  }, [ticker, year]);
 
   return (
     <div className="stock-page">
-      <div className="header-container">
-        {/* Your header content here */}
-      </div>
       <div className="main-container">
-        <AnnouncementTable pdfs={yearsData} ticker={ticker} />
-        <Sidebar ticker={ticker} />
+        <AnnouncementTable ticker={ticker} year={year} announcements={announcements} name={stockName} />
+        <Sidebar year={year} ticker={ticker} />
       </div>
     </div>
   );
 };
 
-export default StockPage;
+export default StockYearPage;

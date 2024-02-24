@@ -1,41 +1,37 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import './AnnouncementTable.css'; // Import your CSS file
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import './AnnouncementTable.css';
 
-const AnnouncementTable = ({ pdfs, ticker }) => {
-  const navigate = useNavigate();
+const AnnouncementTable = ({ ticker, year, announcements }) => {
+  const [announcementsData, setAnnouncementsData] = useState([]);
 
-  const handlePdfClick = (pdfName) => {
-    const pdf = pdfs.find(pdf => pdf.pdfName === pdfName);
-    if (!pdf) {
-      navigate(`/${ticker}/announcement-not-found`);
-    }
-  };
+  useEffect(() => {
+    setAnnouncementsData(announcements);
+  }, [announcements]);
 
   return (
     <div className="announcement-table-container">
-      <h2>{ticker}</h2>
+      <h2>Announcements for {ticker} - {year}</h2>
       <table className="announcement-table">
         <thead>
           <tr>
             <th>Date</th>
-            <th>Announcement</th>
+            <th>Name</th>
+            <th>Pages</th>
+            <th>Price Sensitive</th>
           </tr>
         </thead>
         <tbody>
-          {pdfs.map(pdf => (
-            <tr key={pdf.pdfId}>
-              <td>{new Date(pdf.date).toLocaleDateString()}</td>
+          {announcementsData.map((announcement, index) => (
+            <tr key={index}>
+              <td>{announcement.Timestamp ? new Date(announcement.Timestamp.seconds * 1000).toLocaleDateString() : 'N/A'}</td>
               <td>
-                <a
-                  href={`${process.env.PUBLIC_URL}/${ticker}/${pdf.pdfName}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => handlePdfClick(pdf.pdfName)}
-                >
-                  {pdf.pdfName}
-                </a>
+                <Link to={`/announcement/${ticker}/${year}/${announcement.id}`}>
+                  {announcement.Name}
+                </Link>
               </td>
+              <td>{announcement.Pages ? announcement.Pages : 'N/A'}</td>
+              <td>{announcement.PriceSens ? 'Yes' : 'No'}</td>
             </tr>
           ))}
         </tbody>
