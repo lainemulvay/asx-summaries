@@ -3,11 +3,18 @@ import db from './firebaseConfig';
 
 const getStocks = async () => {
   try {
+    console.log('Fetching stocks data...');
+
     const stocksCollection = collection(db, 'ASX');
+    console.log('Stocks collection reference:', stocksCollection.path);
+
     const snapshot = await getDocs(stocksCollection);
+    console.log('Snapshot of stocks collection:', snapshot.docs);
 
     const stocksData = snapshot.docs.map(doc => {
       const data = doc.data();
+      console.log('Processing data for ticker:', doc.id);
+
       return {
         ticker: doc.id,
         companyName: data.Name,
@@ -16,6 +23,7 @@ const getStocks = async () => {
       };
     });
 
+    console.log('Stocks data:', stocksData);
     return stocksData;
   } catch (error) {
     console.error('Error fetching stocks:', error);

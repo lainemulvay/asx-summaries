@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { collection, getDocs } from 'firebase/firestore';
-import db from '../database/firebaseConfig';
 import './StockList.css';
+import getStocks from '../database/getStocks';
 
 const StockList = () => {
   const [stocks, setStocks] = useState([]);
@@ -10,20 +9,7 @@ const StockList = () => {
   useEffect(() => {
     const fetchStocks = async () => {
       try {
-        const stocksCollection = collection(db, 'ASX');
-        const snapshot = await getDocs(stocksCollection);
-
-        const stocksData = snapshot.docs.map(doc => {
-          const data = doc.data();
-          return {
-            id: doc.id,
-            ticker: doc.id,
-            companyName: data.Name, // Adjust this according to your Firestore structure
-            marketCap: data.marketCap, // Adjust this according to your Firestore structure
-            price: data.price, // Adjust this according to your Firestore structure
-          };
-        });
-
+        const stocksData = await getStocks();
         setStocks(stocksData);
       } catch (error) {
         console.error('Error fetching stocks:', error);

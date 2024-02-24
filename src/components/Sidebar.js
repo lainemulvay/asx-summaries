@@ -1,58 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import db from '../database/firebaseConfig';
+import getYears from '../database/getYears';
 
 const Sidebar = ({ ticker }) => {
-  const [yearsData, setYearsData] = useState([]);
+  const [years, setYears] = useState([]);
 
   useEffect(() => {
-    const fetchYearsData = async () => {
+    const fetchYears = async () => {
       try {
-        const stockRef = db.collection('ASX').doc(ticker);
-        const snapshot = await stockRef.get();
-
-        if (!snapshot.exists) {
-          console.log('Stock not found in database');
-          return;
-        }
-
-        const yearsData = [];
-        const years = snapshot.data();
-
-        for (const year in years) {
-          const pdfs = years[year];
-          yearsData.push({
-            year,
-            pdfs,
-          });
-        }
-
-        setYearsData(yearsData);
+        const yearsData = await getYears(ticker);
+        setYears(yearsData);
       } catch (error) {
-        console.error('Error fetching document:', error);
+        console.error('Error fetching years:', error);
       }
     };
 
-    fetchYearsData();
+    fetchYears();
   }, [ticker]);
 
   return (
-    <div className="sidebar" style={{ position: 'fixed', right: 0 }}>
+    <div className="sidebar">
+      <h3>Years</h3>
       <ul>
-        {yearsData.map(({ year, pdfs }) => (
-          <li key={year}>
-            <div className="year-container">
-              <Link to={`/${ticker}/${year}`}>{year}</Link>
-              <ul className="announcement-list">
-                {pdfs.map(pdf => (
-                  <li key={pdf.PDFId}>
-                    <Link to={`/${ticker}/${year}/${pdf.PDFId}`}>{pdf.PDFName}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </li>
-        ))}
+        {years.length > 0 ? (
+          years.map((year, index) => (
+            <li key={index}>
+              <Link to={`/ASX/${ticker}/${year}`}>
+                {year}
+              </Link>
+            </li>
+          ))
+        ) : (
+          <li>No available years</li>
+        )}
       </ul>
     </div>
   );

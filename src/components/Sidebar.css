@@ -1,48 +1,49 @@
 .sidebar {
-    position: relative; /* Remove 'sticky' */
+    position: relative;
     width: 200px;
     background-color: #f4f4f4;
     padding: 10px;
     margin-left: auto; /* Push to right side of container */
-    margin-top: 20px; /* Adjust as needed */
-}
-
-.sidebar ul {
+    margin-top: 20px;
+  }
+  
+  .sidebar ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
-}
-
-.sidebar li {
+  }
+  
+  .sidebar li {
     margin-bottom: 10px;
-}
-
-.sidebar a {
+  }
+  
+  .sidebar a {
     color: #333;
     text-decoration: none;
-}
-
-.sidebar a:hover {
+  }
+  
+  .sidebar a:hover {
     text-decoration: underline;
-}
-
-.announcement-list {
+  }
+  
+  .announcement-list {
     list-style-type: none;
     margin-left: 10px;
     padding: 0;
-}
-
-.announcement-list li {
+  }
+  
+  .announcement-list li {
     margin-bottom: 5px;
-}
-
-/* Ensure sidebar matches height of content */
-.page-content {
+  }
+  
+  .page-content {
     display: flex;
-}
-
-.main-container {
+    justify-content: space-between; /* Add space between sidebar and main content */
+  }
+  
+  .main-container {
     display: flex;
     flex: 1;
     align-items: flex-start;
-}
+  }
+  

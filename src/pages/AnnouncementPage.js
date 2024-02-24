@@ -1,43 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import db from '../database/firebaseConfig';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import PdfViewer from '../components/PdfViewer';
 import GptSummary from '../components/GptSummary';
 
 const AnnouncementPage = () => {
-  const { ticker, year, ID } = useParams(); // Correctly extract ID here
-  const [pdfDetails, setPdfDetails] = useState(null);
+  const location = useLocation();
+  const [pdfUrl, setPdfUrl] = useState('');
+  const [pdfName, setPdfName] = useState('');
+  const [pdfDate, setPdfDate] = useState('');
 
   useEffect(() => {
-    const fetchPdfDetails = async () => {
-      try {
-        const pdfRef = db.collection('ASX').doc(ticker).collection(year).doc(ID);
-        const pdfDoc = await pdfRef.get();
+    if (location.state && location.state.pdfUrl) {
+      console.log('PDF URL:', location.state.pdfUrl); // Log the PDF URL
+      setPdfUrl(location.state.pdfUrl);
+    }
 
-        if (!pdfDoc.exists) {
-          console.log('PDF not found for ID:', ID);
-          return;
-        }
+    if (location.state && location.state.pdfName) {
+      console.log('PDF Name:', location.state.pdfName); // Log the PDF Name
+      setPdfName(location.state.pdfName);
+    }
 
-        setPdfDetails(pdfDoc.data());
-      } catch (error) {
-        console.error('Error fetching document:', error);
-      }
-    };
+    if (location.state && location.state.pdfDate) {
+      console.log('PDF Date:', location.state.pdfDate); // Log the PDF Date
+      setPdfDate(location.state.pdfDate);
+    }
+  }, [location.state]);
 
-    fetchPdfDetails();
-  }, [ticker, year, ID]);
-
-  if (!pdfDetails) {
+  if (!pdfUrl) {
     return <div>Loading PDF...</div>;
   }
-
-  const { PDFName, URL, Date } = pdfDetails;
 
   return (
     <div>
       <GptSummary summary="Your GPT summary here" />
-      <PdfViewer pdfPath={URL} ticker={ticker} pdfName={PDFName} date={Date} />
+      <div>
+        <h2>{pdfName}</h2>
+        <p>Date: {pdfDate}</p>
+        <PdfViewer pdfPath={pdfUrl} />
+      </div>
     </div>
   );
 };
