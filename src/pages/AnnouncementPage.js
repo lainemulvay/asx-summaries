@@ -11,20 +11,20 @@ const AnnouncementPage = () => {
 
   useEffect(() => {
     if (location.state && location.state.pdfUrl) {
-      console.log('PDF URL:', location.state.pdfUrl); // Log the PDF URL
+      console.log('PDF URL:', location.state.pdfUrl);
       setPdfUrl(location.state.pdfUrl);
     }
 
     if (location.state && location.state.pdfName) {
-      console.log('PDF Name:', location.state.pdfName); // Log the PDF Name
+      console.log('PDF Name:', location.state.pdfName);
       setPdfName(location.state.pdfName);
     }
 
     if (location.state && location.state.pdfDate) {
-      console.log('PDF Date:', location.state.pdfDate); // Log the PDF Date
+      console.log('PDF Date:', location.state.pdfDate);
       setPdfDate(location.state.pdfDate);
     }
-  }, [location.state]);
+  }, [location.state]);g
 
   if (!pdfUrl) {
     return <div>Loading PDF...</div>;
@@ -36,7 +36,7 @@ const AnnouncementPage = () => {
       <div>
         <h2>{pdfName}</h2>
         <p>Date: {pdfDate}</p>
-        <PdfViewer pdfPath={pdfUrl} />
+        <PdfViewer pdfUrl={pdfUrl} />
       </div>
     </div>
   );
