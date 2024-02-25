@@ -24,7 +24,7 @@ const AnnouncementPage = () => {
       console.log('PDF Date:', location.state.pdfDate);
       setPdfDate(location.state.pdfDate);
     }
-  }, [location.state]);g
+  }, [location.state]);
 
   if (!pdfUrl) {
     return <div>Loading PDF...</div>;
