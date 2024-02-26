@@ -3,7 +3,6 @@
     max-width: 800px;
     margin: 0 auto;
     margin-bottom: 60px;
-    min-height: calc(100vh - 301px);
   }
   
   .announcement-table {
