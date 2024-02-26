@@ -9,15 +9,15 @@ const AnnouncementPage = ({ announcement, stockName, onBack }) => {
 
   return (
     <div>
+      <button onClick={onBack}>Back to Announcement List</button>
       <GptSummary summary="Your GPT summary here" />
-      <div>
-        <h2>{announcement.Name}</h2>
+      <div style={{ maxWidth: '80%', margin: '0 auto', overflowWrap: 'break-word' }}>
+        <h2>{announcement.Name}</h2> 
         <p>Date: {announcement.Timestamp ? announcement.Timestamp.toDate().toLocaleString() : 'N/A'}</p>
-        <PdfViewer pdfUrl={announcement.URL} />
-        <button onClick={onBack}>Back</button>
       </div>
+      <PdfViewer pdfUrl={announcement.URL} />
     </div>
   );
 };
 
-export default AnnouncementPage; // Make sure to export
+export default AnnouncementPage;
