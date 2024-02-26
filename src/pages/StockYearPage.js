@@ -13,11 +13,9 @@ const StockYearPage = () => {
   useEffect(() => {
     const fetchYearData = async () => {
       try {
-        // Fetch announcements using getAnnouncements function
         const announcementsData = await getAnnouncements(ticker, year);
         setAnnouncements(announcementsData);
 
-        // Fetch stock name
         const stockSnapshot = await db.collection('ASX').doc(ticker).get();
         if (stockSnapshot.exists) {
           setStockName(stockSnapshot.data().Name);

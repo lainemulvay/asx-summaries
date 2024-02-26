@@ -8,22 +8,33 @@ const AnnouncementPage = () => {
   const [pdfUrl, setPdfUrl] = useState('');
   const [pdfName, setPdfName] = useState('');
   const [pdfDate, setPdfDate] = useState('');
+  const [announcement, setAnnouncement] = useState(null);
 
   useEffect(() => {
+    console.log('Location State:', location.state); // Log location state
+
     if (location.state && location.state.pdfUrl) {
-      console.log('PDF URL:', location.state.pdfUrl);
       setPdfUrl(location.state.pdfUrl);
     }
 
-    if (location.state && location.state.pdfName) {
-      console.log('PDF Name:', location.state.pdfName);
-      setPdfName(location.state.pdfName);
+    if (location.state && location.state.timestamp) {
+      setPdfDate(location.state.timestamp);
     }
 
-    if (location.state && location.state.pdfDate) {
-      console.log('PDF Date:', location.state.pdfDate);
-      setPdfDate(location.state.pdfDate);
+    if (location.state && location.state.id) {
+      console.log('ID:', location.state.id); // Log ID
     }
+
+    if (location.state && location.state.name) {
+      setPdfName(location.state.name);
+    }
+
+    if (location.state && location.state.priceSensitive) {
+      console.log('Price Sensitive:', location.state.priceSensitive); // Log Price Sensitive
+    }
+
+    // Store the entire announcement object for later use if needed
+    setAnnouncement(location.state);
   }, [location.state]);
 
   if (!pdfUrl) {

@@ -31,9 +31,19 @@ const AnnouncementTable = ({ ticker, year, announcements }) => {
                     pathname: `/ASX/${ticker}/announcement/${announcement.ID}`,
                     state: {
                       pdfUrl: announcement.URL,
-                      timestamp: announcement.Timestamp ? announcement.Timestamp.toDate().toLocaleString() : 'N/A'
+                      timestamp: announcement.Timestamp ? announcement.Timestamp.toDate().toLocaleString() : 'N/A',
+                      id: announcement.ID,
+                      name: announcement.Name,
+                      priceSensitive: announcement.PriceSens
                     }
                   }}
+                  onClick={() => console.log('State passed through:', {
+                    pdfUrl: announcement.URL,
+                    timestamp: announcement.Timestamp ? announcement.Timestamp.toDate().toLocaleString() : 'N/A',
+                    id: announcement.ID,
+                    name: announcement.Name,
+                    priceSensitive: announcement.PriceSens
+                  })}
                 >
                   {announcement.Name}
                 </Link>
