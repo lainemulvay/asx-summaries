@@ -1,6 +1,7 @@
 .stock-list-container {
   margin: 20px auto;
   max-width: 800px;
+  min-height: calc(100vh - 261px);
 }
 
 .stock-table {
