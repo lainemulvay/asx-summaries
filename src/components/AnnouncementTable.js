@@ -19,9 +19,15 @@ const AnnouncementTable = ({ announcements, ticker, onAnnouncementClick }) => {
             <tr key={index}>
               <td>{announcement.Timestamp ? new Date(announcement.Timestamp.seconds * 1000).toLocaleDateString() : 'N/A'}</td>
               <td>
-                <button onClick={() => onAnnouncementClick(announcement)}>
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onAnnouncementClick(announcement);
+                  }}
+                >
                   {announcement.Name}
-                </button>
+                </a>
               </td>
               <td>{announcement.Pages || 'N/A'}</td>
               <td>{announcement.PriceSens ? 'Yes' : 'No'}</td>
