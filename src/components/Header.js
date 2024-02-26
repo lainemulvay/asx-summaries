@@ -58,12 +58,6 @@ const Header = () => {
         <Link to="/ASX/stock-list" className="header-sublink">
           Stock List
         </Link>
-        <Link to="/register" className="header-sublink">
-          Register
-        </Link>
-        <Link to="/login" className="header-sublink">
-          Login
-        </Link>
       </div>
     </header>
   );
