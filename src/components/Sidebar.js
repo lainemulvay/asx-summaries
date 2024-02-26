@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import getYears from '../database/getYears';
+import './Sidebar.css';
 
 const Sidebar = ({ ticker }) => {
   const [years, setYears] = useState([]);
@@ -8,7 +8,8 @@ const Sidebar = ({ ticker }) => {
   useEffect(() => {
     const fetchYears = async () => {
       try {
-        const yearsData = await getYears(ticker);
+        const currentYear = new Date().getFullYear();
+        const yearsData = Array.from({ length: 11 }, (_, i) => currentYear - i);
         setYears(yearsData);
       } catch (error) {
         console.error('Error fetching years:', error);
