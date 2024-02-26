@@ -30,7 +30,7 @@ const AnnouncementPage = ({ announcement, stockName, onBack }) => {
       <GptSummary summary="Your GPT summary here" />
       <div style={{ maxWidth: '80%', margin: '0 auto', overflowWrap: 'break-word' }}>
         <h2>{announcement.Name}</h2>
-        <p>Date: {announcement.Timestamp ? announcement.Timestamp.toDate().toLocaleString() : 'N/A'}</p>
+        <p>Released: {announcement.Timestamp ? announcement.Timestamp.toDate().toLocaleString() : 'N/A'}</p>
       </div>
       <PdfViewer pdfUrl={announcement.URL} />
     </div>
