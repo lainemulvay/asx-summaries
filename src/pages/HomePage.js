@@ -8,7 +8,7 @@ const HomePage = () => {
         <div className="content">
           {/* Content for the Home Page */}
           <h2>Welcome to ASX Summaries</h2>
-          <p>This is the home page content.</p>
+          <p>Enter a stock ticker above to get started.</p>
         </div>
       </main>
     </div>

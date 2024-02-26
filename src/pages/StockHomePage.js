@@ -40,8 +40,9 @@ const StockHomePage = () => {
 
   return (
     <div className="stock-page">
-      <div className="content-container">
-        <AnnouncementTable announcements={announcements} name={stockName} ticker={ticker} />
+      <div className="content">
+        < h2> {ticker}</h2>
+        <p> Choose a year to view announcements.</p>
         <Sidebar years={announcements} ticker={ticker} />
       </div>
     </div>

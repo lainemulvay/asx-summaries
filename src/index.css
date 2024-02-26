@@ -16,6 +16,11 @@ code {
   min-height: calc(100vh - 221px);
 }
 
+.content {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
 h2 {
   margin: 0;
   padding: 20px 0;
