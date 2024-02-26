@@ -3,7 +3,7 @@ const cheerio = require('cheerio');
 const db = require('./firebaseConfig');
 
 const ASX_URL = 'https://www.asx.com.au/markets/trade-our-cash-market/announcements.bhp';
-const MAX_ANNOUNCEMENTS = 1;
+const MAX_ANNOUNCEMENTS = 1; // Change this to control how many announcements to scrape
 
 async function scrapeAnnouncements() {
   try {
