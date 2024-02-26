@@ -3,12 +3,14 @@ import { useParams } from 'react-router-dom';
 import db from '../database/firebaseConfig';
 import AnnouncementTable from '../components/AnnouncementTable';
 import Sidebar from '../components/Sidebar';
-import getAnnouncements from '../database/getAnnouncements'; // Import the function
+import getAnnouncements from '../database/getAnnouncements';
+import AnnouncementPage from './AnnouncementPage';
 
 const StockYearPage = () => {
   const { ticker, year } = useParams();
   const [announcements, setAnnouncements] = useState([]);
   const [stockName, setStockName] = useState('');
+  const [selectedAnnouncement, setSelectedAnnouncement] = useState(null);
 
   useEffect(() => {
     const fetchYearData = async () => {
@@ -28,10 +30,32 @@ const StockYearPage = () => {
     fetchYearData();
   }, [ticker, year]);
 
+  const handleAnnouncementClick = (announcement) => {
+    setSelectedAnnouncement(announcement);
+  };
+
+  const handleBack = () => {
+    setSelectedAnnouncement(null);
+  };
+
+  if (selectedAnnouncement) {
+    return (
+      <AnnouncementPage
+        announcement={selectedAnnouncement}
+        stockName={stockName}
+        onBack={handleBack}
+      />
+    );
+  }
+
   return (
     <div className="stock-page">
       <div className="main-container">
-        <AnnouncementTable ticker={ticker} year={year} announcements={announcements} name={stockName} />
+        <AnnouncementTable
+          announcements={announcements}
+          ticker={ticker}
+          onAnnouncementClick={handleAnnouncementClick}
+        />
         <Sidebar year={year} ticker={ticker} />
       </div>
     </div>
